@@ -1,0 +1,50 @@
+.InputFromTo .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: rgba(239, 240, 209, 0.4) !important;
+  color: #4a90e2;
+}
+.InputFromTo .DayPicker-Day {
+  border-radius: 0 !important;
+}
+.InputFromTo .DayPicker-Day--start {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+.InputFromTo .DayPicker-Day--end {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+}
+.InputFromTo .DayPickerInput-Overlay {
+  width: 550px;
+}
+.InputFromTo-to .DayPickerInput-Overlay {
+  margin-left: -198px;
+}
+.rdrDateRangePickerWrapper {
+
+  .rdrDefinedRangesWrapper{
+    background: rgba(239, 240, 209, 0.1);
+  }
+  .rdrStaticRange{
+    background: rgba(239, 240, 209, 0.1);
+    border-bottom: 1px dashed;
+  }
+
+  border: 1px dashed gray;
+  border-radius: 1em;
+}
+
+.rdrDateDisplayWrapper {
+  background-color: rgba(239, 240, 209, 0.3);
+}
+
+.rdrMonth {
+  background-color: rgba(239, 240, 209, 0.3);
+}
+
+.rdrMonthAndYearWrapper {
+  background-color: rgba(239, 240, 209, 0.3);
+}
+
+.rdrCalendarWrapper {
+  background: none;
+}

@@ -1,0 +1,8 @@
+.clickable-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.clickable-card.disabled {
+  opacity: 0.4;
+}
