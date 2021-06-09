@@ -6,6 +6,7 @@ import RangeDatePicker from "./DatePicker";
 import { Range } from "../commonlib/types";
 import Card from "./Card/Card";
 import { getInitialRange } from "../commonlib/utils";
+import { useCountySeries } from "./hooks/useCountySeries";
 
 export enum CATEGORY {
   RETAIL = "retail and recreation",
@@ -30,6 +31,7 @@ const Home = () => {
   const [filteredData, setFilteredData] = useState();
   const [range, setRange] = useState<Range>();
   const [config, setConfig] = useState(initialConfig);
+  const { data: counties, isLoading: isCountiesLoading } = useCountySeries();
 
   const handleUpdateRange = (range: Range) => {
     if (isLoading) {
@@ -59,6 +61,31 @@ const Home = () => {
       ...config,
       [label]: !currentState,
     });
+  };
+
+  const renderCountyCharts = () => {
+    if (isCountiesLoading) return;
+
+    return Object.keys(counties).map((county) => (
+      <Box
+        py={5}
+        pl={5}
+        pr={5}
+        width="95%"
+        style={{
+          height: "512px",
+        }}
+      >
+        <Box display="flex" justifyContent="center">
+          <Typography variant="h3"> {county} </Typography>
+        </Box>
+        <SimpleChart
+          isLoading={isCountiesLoading}
+          series={counties[county]}
+          config={config}
+        />
+      </Box>
+    ));
   };
 
   return (
@@ -156,12 +183,16 @@ const Home = () => {
           height: "512px",
         }}
       >
+        <Box display="flex" justifyContent="center">
+          <Typography variant="h3"> Romania </Typography>
+        </Box>
         <SimpleChart
           isLoading={isLoading}
           series={filteredData}
           config={config}
         />
       </Box>
+      <React.Fragment>{renderCountyCharts()}</React.Fragment>
     </Box>
   );
 };
